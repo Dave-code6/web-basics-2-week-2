@@ -6,12 +6,37 @@
  //@param {number} number1
  //@param {number} number2
  //@return {number} product
-const multiplication = () => {
-  return
-}
 
-const answer1 = multiplication()
-console.log('answer1', answer1)
+
+//The top answer is with user input and the latter is without
+
+/*const multiplication = () => {
+   numb1 = prompt( "please enter a number");
+   numb2 = prompt( "please enter a number");
+   product = 0
+  for (let i = 0; i < +numb2; i++){
+    product += +numb1;
+    }
+    alert(`The product is ${product}.`);
+    }
+
+multiplication();
+
+*/
+
+const multiplication = (numb1, numb2) => {
+  let product = 0
+  for (let i = 0; i < numb2; i++){
+    product += numb1;
+    }
+    return product
+    }
+   
+  console.log(multiplication( 8,5) ); 
+
+
+
+
 
 const htmlTarget = document.getElementById('a-1')
 htmlTarget.innerHTML = answer1
@@ -25,14 +50,26 @@ htmlTarget.innerHTML = answer1
 
 //@param {string}
 //@return {character} => array of characters
-vowelOrConsonant = () => {
+ const word = prompt ("Enter a word")
+vowelOrConsonant = (str) => {
+  let vowels = ["a", "e", "i", "o", "u"]
+  let v = [];
+  let c = [];
+  for(let i = 0; i < str.length; i++){
+      let char = str[i] //h
+      if vowels.indexOf(char) === -1){
+
+      }
+    }
   return
+
 }
 
-const answer2 = vowelOrConsonant()
+//const answer2 = vowelOrConsonant()
 
 const htmlTarget2 = document.getElementById('a-2')
 htmlTarget2.innerHTML = answer2
+
 
 
 
@@ -45,15 +82,37 @@ htmlTarget2.innerHTML = answer2
 //where: name, saves the name of the player. Lives, represents the remaining oportunities each time the player fails. Fail_numbers, is an array of numbers that stores the fail numbers the player has used
 
 //@return {string} win / gameOver => the string that says if the user wasted the three oportunities showing the fails numbers or the name if the player wins
-guessTheNumber  = () => {
-  return
+const player = {
+  name:" ",
+  lives: 2,//I know it's possible to start at 1 instead of zero.
+  failnumbers:[]
 }
+player.name = prompt("Please enter your name")
+const randomnumb = randomnumber();
+let guess;
+let message;
 
-const answer3 = guessTheNumber()
 
-const htmlTarget3 = document.getElementById('a-3')
-htmlTarget3.innerHTML = answer3
-
+function randomnumber(){
+   return Math.floor( Math.random() *50 ) +10;
+}
+for(let i = 1; i <= 3; i++){
+  let lives = player.lives;
+  let attempts = player.failnumbers;
+  guess = prompt("guess a number between ten and fifty");
+if( +guess === randomnumb ){
+  message = alert(`Congratulations ${player.name.toUpperCase() } you guessed correctly`);
+  break;
+} if (+guess != randomnumb){
+  player.lives--;
+  attempts.push(guess);
+  message = alert(`You have ${lives} guesses remaining`);
+} if (player.lives <= -1)////the negative 1 is because lives starts at zero
+ {
+  message = alert(`Game over, you guessed ${player.failnumbers.join(", " )} none of those guesses were correct`);
+}
+}
+console.log(player.failnumbers);
 
 
 //------------------------ Question 4 ---------------------------
@@ -62,6 +121,7 @@ htmlTarget3.innerHTML = answer3
 //example: if the user select sorting by title the return value must be: "Mockingjay: The Final Book of The Hunger Games; Walter Isaacson; The Road Ahead"
 
 sort = () => {
+let userrequest = prompt("how would you like these sorted? Title? Author? Library id?")
 
   var library = [
    {
